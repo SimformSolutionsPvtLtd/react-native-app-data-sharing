@@ -1,0 +1,49 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Instruction: define permission of app -->
+    <permission
+      android:name="${applicationId}.permission.READ_SHARED_PREFS"
+      android:protectionLevel="normal" />
+
+    <!-- Instruction: add permission of other app -->
+    <uses-permission android:name="data.example.two.permission.READ_SHARED_PREFS" tools:ignore="CustomPermissionTypo" />
+
+    <queries>
+        <!-- Instruction: define package of app for android 11-->
+        <package android:name="${applicationId}" />
+        <package android:name="data.example.two" />
+    </queries>
+
+    <application
+      android:name=".MainApplication"
+      android:label="@string/app_name"
+      android:icon="@mipmap/ic_launcher"
+      android:roundIcon="@mipmap/ic_launcher_round"
+      android:allowBackup="false"
+      android:theme="@style/AppTheme"
+      android:supportsRtl="true">
+      <activity
+        android:name=".MainActivity"
+        android:label="@string/app_name"
+        android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+        android:launchMode="singleTask"
+        android:windowSoftInputMode="adjustResize"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+      </activity>
+
+      <!-- Instruction: define provider of app -->
+      <provider
+        android:name="com.data.SharedPreferencesProvider"
+        android:authorities="${applicationId}.sharedpreferencesprovider"
+        android:permission="${applicationId}.permission.READ_SHARED_PREFS"
+        android:enabled="true"
+        android:exported="true" />
+
+    </application>
+</manifest>
