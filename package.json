@@ -1,0 +1,174 @@
+{
+  "name": "react-native-app-data-sharing",
+  "version": "1.0.0",
+  "description": "This React Native package facilitates seamless and secure data sharing between applications on the same device.",
+  "source": "./src/index.tsx",
+  "main": "./build/commonjs/index.js",
+  "module": "./build/module/index.js",
+  "files": [
+    "src",
+    "build",
+    "android",
+    "ios",
+    "cpp",
+    "*.podspec",
+    "react-native.config.js",
+    "!ios/build",
+    "!android/build",
+    "!android/gradle",
+    "!android/gradlew",
+    "!android/gradlew.bat",
+    "!android/local.properties",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__",
+    "!**/.*",
+    "plugin",
+    "!plugin/src",
+    "app.plugin.js"
+  ],
+  "scripts": {
+    "test": "jest",
+    "typecheck": "tsc",
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build build",
+    "prepare": "bob build && yarn run build:plugin",
+    "build": "bob build && yarn run build:plugin",
+    "build:plugin": "del-cli plugin/build && tsc --build plugin/tsconfig.json",
+    "build:local": "bob build && yarn run build:plugin && yarn pack",
+    "expo-module": "expo-module"
+  },
+  "keywords": [
+    "react-native",
+    "ios",
+    "android"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SimformSolutionsPvtLtd/react-native-app-data-sharing.git"
+  },
+  "author": "Simform Solutions",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SimformSolutionsPvtLtd/react-native-app-data-sharing/issues"
+  },
+  "homepage": "https://github.com/SimformSolutionsPvtLtd/react-native-app-data-sharing#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^17.0.2",
+    "@evilmartians/lefthook": "^1.5.0",
+    "@react-native-community/cli": "15.0.1",
+    "@react-native/eslint-config": "^0.73.1",
+    "@types/jest": "^29.5.5",
+    "@types/react": "^18.2.44",
+    "commitlint": "^17.0.2",
+    "del-cli": "^5.1.0",
+    "eslint": "^8.51.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-jest": "^28.11.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "expo-module-scripts": "^4.0.2",
+    "jest": "^29.7.0",
+    "prettier": "^3.0.3",
+    "react": "18.3.1",
+    "react-native": "0.76.5",
+    "react-native-builder-bob": "^0.35.2",
+    "turbo": "^1.10.7",
+    "typescript": "^5.2.2"
+  },
+  "resolutions": {
+    "@types/react": "^18.2.44"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "workspaces": [
+    "examples/*"
+  ],
+  "packageManager": "yarn@3.6.1",
+  "jest": {
+    "preset": "react-native",
+    "modulePathIgnorePatterns": [
+      "<rootDir>/examples/example1/node_modules",
+      "<rootDir>/examples/example2/node_modules",
+      "<rootDir>/build/"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@react-native",
+      "prettier"
+    ],
+    "env": {
+      "jest": true
+    },
+    "rules": {
+      "react/react-in-jsx-scope": "off",
+      "prettier/prettier": [
+        "off",
+        {
+          "quoteProps": "consistent",
+          "singleQuote": true,
+          "tabWidth": 2,
+          "trailingComma": "es5",
+          "useTabs": false
+        }
+      ],
+      "jest/no-disabled-tests": "off"
+    }
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "build/",
+    "plugin"
+  ],
+  "prettier": {
+    "quoteProps": "consistent",
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "useTabs": false
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "build",
+    "targets": [
+      [
+        "commonjs",
+        {
+          "esm": true
+        }
+      ],
+      [
+        "module",
+        {
+          "esm": true
+        }
+      ],
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json",
+          "esm": true
+        }
+      ]
+    ]
+  },
+  "create-react-native-library": {
+    "type": "legacy-module",
+    "languages": "kotlin-swift",
+    "version": "0.45.5"
+  },
+  "dependencies": {
+    "@expo/config-plugins": "^9.0.12"
+  }
+}
