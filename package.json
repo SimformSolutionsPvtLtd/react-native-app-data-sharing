@@ -41,7 +41,26 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "data",
+    "sharing",
+    "react-native-data-sharing",
+    "data-sharing",
+    "data-sharing-library",
+    "data-sharing-react-native",
+    "react-native-library",
+    "react-native-module",
+    "react-native-plugin",
+    "react-native-app-data-sharing",
+    "react-native-app-data-sharing-expo",
+    "expo",
+    "expo-module",
+    "expo-plugin",
+    "plugin",
+    "app-data-sharing",
+    "app-data-sharing-library",
+    "native-modules",
+    "app-data-exchange"
   ],
   "repository": {
     "type": "git",
