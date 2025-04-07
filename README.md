@@ -1,4 +1,4 @@
-![React Native App Data Sharing - Simform]()
+![React Native App Data Sharing - Simform](./assets/React%20Native%20App%20Data%20Sharing.png)
 
 # react-native-app-data-sharing
 
