@@ -1,38 +1,16 @@
-import { STORAGE_TYPE } from './enums.ios';
+// Modified from react-native-keychain (https://github.com/oblador/react-native-keychain)
+
 import type {
   AuthenticationPrompt,
   BaseOptions,
   GetOptions,
   SetOptions,
-} from './types';
+} from './DataSharingTypes';
 
 // Default authentication prompt options
 export const AUTH_PROMPT_DEFAULTS: AuthenticationPrompt = {
   title: 'Authenticate to retrieve secret',
-  cancel: 'Cancel',
 };
-
-/**
- * Normalizes the storage options for keychain functions.
- *
- * @param options - The options object which includes storage configuration.
- *                  It can be of type SetOptions or GetOptions.
- * @returns A SetOptions object with the deprecated 'AES' storage type converted to 'AES_CBC'.
- *          If the 'AES' storage type is not used, the original options are returned unmodified.
- * @deprecated The use of 'AES' as a storage option is deprecated and will be removed in a future major release.
- */
-export function normalizeStorageOptions(
-  options: SetOptions | GetOptions
-): SetOptions {
-  if ('storage' in options && options.storage === STORAGE_TYPE.AES) {
-    console.warn(
-      `You passed 'AES' as a storage option to one of the react-native-keychain functions.
-            This way of passing storage is deprecated and will be removed in a future major.`
-    );
-    return { ...options, storage: STORAGE_TYPE.AES_CBC };
-  }
-  return options;
-}
 
 /**
  * Normalizes the service option for keychain functions.
@@ -95,10 +73,10 @@ export function normalizeServerOption(
 export function normalizeOptions(
   serviceOrOptions?: string | SetOptions | GetOptions
 ): SetOptions | GetOptions {
-  const options = normalizeStorageOptions({
+  const options = {
     authenticationPrompt: AUTH_PROMPT_DEFAULTS,
     ...normalizeServiceOption(serviceOrOptions),
-  });
+  };
 
   const { authenticationPrompt } = options;
 

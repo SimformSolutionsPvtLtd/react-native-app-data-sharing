@@ -1,11 +1,10 @@
+// Modified from react-native-keychain (https://github.com/oblador/react-native-keychain)
+
 import type {
   ACCESS_CONTROL,
   ACCESSIBLE,
   AUTHENTICATION_TYPE,
-  SECURITY_LEVEL,
-  SECURITY_RULES,
-  STORAGE_TYPE,
-} from './enums.ios';
+} from './DataSharingEnums.ios';
 
 /**
  * Interface for shared data options
@@ -65,18 +64,6 @@ export interface ErrorType {
 export type AuthenticationPrompt = {
   /** The title for the authentication prompt. */
   title?: string;
-  /** The subtitle for the authentication prompt.
-   * @platform Android
-   */
-  subtitle?: string;
-  /** The description for the authentication prompt.
-   * @platform Android
-   */
-  description?: string;
-  /** The cancel button text for the authentication prompt.
-   * @platform Android
-   */
-  cancel?: string;
 };
 
 export type BaseOptions = {
@@ -103,15 +90,6 @@ export type SetOptions = {
    * @default ACCESSIBLE.AFTER_FIRST_UNLOCK
    */
   accessible?: ACCESSIBLE;
-  /** The desired security level of the keychain item.
-   * @platform Android
-   */
-  securityLevel?: SECURITY_LEVEL;
-  /** The storage type.
-   * @platform Android
-   * @default 'Best available storage'
-   */
-  storage?: STORAGE_TYPE;
   /** Authentication prompt details or a title string.
    * @default
    * ```json
@@ -130,17 +108,11 @@ export type SetOptions = {
 export type GetOptions = {
   /** The access control policy to use for the keychain item. */
   accessControl?: ACCESS_CONTROL;
-  /** The security rules to apply when storing the keychain item.
-   * @platform Android
-   * @default SECURITY_RULES.AUTOMATIC_UPGRADE
-   */
-  rules?: SECURITY_RULES;
   /** Authentication prompt details or a title string.
    * @default
    * ```json
    * {
    *   "title": "Authenticate to retrieve secret",
-   *   "cancel": "Cancel"
    * }
    * ```
    *
@@ -168,8 +140,6 @@ export type AuthenticationTypeOption = {
 export type Result = {
   /** The service name associated with the keychain item. */
   service: string;
-  /** The storage type used for the keychain item. */
-  storage: STORAGE_TYPE;
 };
 
 /**

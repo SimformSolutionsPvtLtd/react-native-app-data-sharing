@@ -106,10 +106,29 @@ class DataModule(reactContext: ReactApplicationContext) :
   }
 
   @ReactMethod
-  fun clearSharedData(promise: Promise) {
+    fun clearSharedData(options: ReadableMap? = null, promise: Promise) {
     val authority = reactApplicationContext.packageName
     try {
-      clearAllData(reactApplicationContext, authority, promise)
+      var syncEnabled = true
+      if (options != null) {
+        if (options.hasKey(DataConstants.dataSync)) {
+          syncEnabled = options.getBoolean(DataConstants.dataSync)
+        }
+      }
+      if(syncEnabled){
+        val storedBundleIds = getStoredAuthorities(syncEnabled)
+        try {
+          for (newAuthority in storedBundleIds) {
+            if (newAuthority.isNotEmpty()) {
+              clearAllData(reactApplicationContext, newAuthority, promise)
+            }
+          }
+        } catch (e: Exception){
+          promise.reject(DataConstants.CLEAR_ERROR, DataConstants.clearDataErrorMessage, e)
+        }
+      } else {
+        clearAllData(reactApplicationContext, authority, promise)
+      }
       promise.resolve(true)
     } catch (e: Exception) {
       promise.reject(DataConstants.CLEAR_ERROR, DataConstants.clearDataErrorMessage, e)

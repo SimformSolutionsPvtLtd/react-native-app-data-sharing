@@ -1,3 +1,5 @@
+// Modified from react-native-keychain (https://github.com/oblador/react-native-keychain)
+
 #import <Security/Security.h>
 #import "Data.h"
 #import <React/RCTConvert.h>
