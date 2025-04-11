@@ -189,5 +189,16 @@
   },
   "dependencies": {
     "@expo/config-plugins": "^9.0.12"
+  },
+  "types": "build/typescript/commonjs/src/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./build/typescript/module/src/index.d.ts"
+      },
+      "require": {
+        "types": "./build/typescript/commonjs/src/index.d.ts"
+      }
+    }
   }
 }

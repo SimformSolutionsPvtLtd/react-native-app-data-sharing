@@ -1,4 +1,4 @@
-![React Native App Data Sharing - Simform](./assets/React%20Native%20App%20Data%20Sharing.png)
+![React Native App Data Sharing - Simform](./assets/React-Native-App-Data-Sharing.png)
 
 # react-native-app-data-sharing
 
@@ -10,7 +10,7 @@ This React Native package facilitates seamless and secure data sharing between a
 
 ## Quick Access
 
-[Installation](#installation) | [Usage and Examples](#usage)| [Methods](#methods) | [Example Code](#examples) | [License](#license)
+[Installation](#installation) | [Usage and Examples](#usage) | [Methods](#methods) | [Example Code](#examples) | [License](#license)
 
 ## Getting Started
 
@@ -40,9 +40,9 @@ npx pod-install
 
 ### Android
 
-1. Set Permissions in `manifest.xml`
+1. Set Permissions in `AndroidManifest.xml`
 
-   Add the following permission to your app's `manifest.xml` file:
+   Add the following permission to your app's `AndroidManifest.xml` file:
 
    ```xml
    <!-- Instruction: define app-specific permission -->
@@ -51,13 +51,13 @@ npx pod-install
      android:protectionLevel="normal" />
    ```
 
-   This permission allows other apps to access shared data when they define the same permission in their `manifest.xml`.
+   This permission allows other apps to access shared data when they define the same permission in their `AndroidManifest.xml`.
 
    > Note: Keep `${applicationId}` as-is. It will automatically resolve to your app's bundle ID.
 
-2. Configure the Provider in `manifest.xml`
+2. Configure the Provider in `AndroidManifest.xml`
 
-   Define a provider in your `manifest.xml` file:
+   Define a provider in your `AndroidManifest.xml` file:
 
    ```xml
    <!-- Instruction: define app-specific provider -->
@@ -75,7 +75,7 @@ npx pod-install
 
 3. Declare Permissions for External Apps
 
-   If your app needs to access data from another app, add its permissions to your `manifest.xml` file:
+   If your app needs to access data from another app, add its permissions to your `AndroidManifest.xml` file:
 
    ```xml
    <!-- Instruction: Declare permission for another app -->
@@ -93,7 +93,7 @@ npx pod-install
 
    Android 11 introduces package visibility restrictions, so you must explicitly define the apps your app intends to query. Add the following inside the
 
-   `<queries>` section of your `manifest.xml`:
+   `<queries>` section of your `AndroidManifest.xml`:
 
    ```xml
      <queries>
@@ -148,7 +148,7 @@ For detailed instructions, refer to:
 }
 ```
 
-Replace `YOUR_BUNDLE_IDS` with the same bundle IDs you used when initializing the store. This ensures the required permissions are added to manifest.xml.
+Replace `YOUR_BUNDLE_IDS` with the same bundle IDs you used when initializing the store. This ensures the required permissions are added to AndroidManifest.xml.
 
 ### iOS
 
@@ -269,6 +269,9 @@ const styles = StyleSheet.create({
 }
 ```
 
+- dataSync: (Optional) A boolean value that indicates whether to synchronize data across apps. If set to true, the data will be synchronized with other apps that share the same authority.
+- ios: (Optional) A string or an object that specifies the access control options for iOS Keychain data. It can be a string representing the access control level or an object with specific options.
+
 ---
 
 ### InitialProviderType
@@ -387,7 +390,7 @@ Return Type:
 
 ---
 
-### getAllSyncData()
+### getAllSyncData(options)
 
 ```ts
 getAllSyncData(options?: DataOptionsType): Promise<Record<string, string>>
@@ -409,10 +412,10 @@ Return Type:
 
 ---
 
-### deleteData(key)
+### deleteData(key, options)
 
 ```ts
-deleteData(key: string): Promise<void>
+deleteData(key: string, options?: DataOptionsType): Promise<void>
 ```
 
 Description:
@@ -424,6 +427,7 @@ The `deleteData` method removes a specific key-value pair from the shared storag
 Parameters:
 
 - key (string): The unique identifier for the data to delete.
+- options (optional, DataOptionsType): Platform-specific options for the data to delete.
 
 Return Type:
 
@@ -431,10 +435,10 @@ Return Type:
 
 ---
 
-### clearData()
+### clearData(options)
 
 ```ts
-clearData(): Promise<void>
+clearData(options?: DataOptionsType): Promise<void>
 ```
 
 Description:
@@ -445,11 +449,15 @@ The clearData method removes all data from the shared storage.
 
 Parameters:
 
-- None.
+- options (optional, DataOptionsType): Platform-specific options for clear all data.
 
 Return Type:
 
 - Promise<void>: A promise that resolves when all data is successfully cleared.
+
+## Acknowledgements
+
+This library uses and modifies the iOS implementation from [react-native-keychain](https://github.com/oblador/react-native-keychain) for custom internal needs.
 
 ## Examples
 

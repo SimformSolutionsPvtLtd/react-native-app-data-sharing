@@ -4,8 +4,8 @@ import {
   type DataOptionsType,
   type ErrorType,
   type InitialProviderType,
-} from './types';
-import { normalizeOptions } from './normalizeOptions.ios';
+} from './DataSharingTypes';
+import { normalizeOptions } from './NormalizeOptionsUtils.ios';
 
 const LINKING_ERROR =
   `The package 'react-native-app-data-sharing' doesn't seem to be linked. Make sure: \n\n` +
@@ -251,7 +251,9 @@ export const clearData = async (
   options?: DataOptionsType
 ): Promise<boolean> => {
   try {
-    const platformOptions = IS_ANDROID ? {} : normalizeOptions(options?.ios);
+    const platformOptions = IS_ANDROID
+      ? options?.android
+      : normalizeOptions(options?.ios);
 
     const result = await Data.clearSharedData(platformOptions);
     return Promise.resolve(result);
