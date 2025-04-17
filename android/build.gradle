@@ -51,11 +51,6 @@ android {
   if (supportsNamespace()) {
     namespace "com.data"
 
-    sourceSets {
-      main {
-        manifest.srcFile "src/main/AndroidManifestNew.xml"
-      }
-    }
   }
 
   compileSdkVersion getExtOrIntegerDefault("compileSdkVersion")
