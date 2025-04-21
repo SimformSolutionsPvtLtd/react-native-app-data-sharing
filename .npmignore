@@ -1,0 +1,6 @@
+.github/
+examples/
+assets/
+.editorconfig
+CONTRIBUTING.md
+babel.config.js
