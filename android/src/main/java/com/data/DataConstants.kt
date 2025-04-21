@@ -1,0 +1,28 @@
+package com.data
+
+object DataConstants {
+  const val authorityPreference = ".sharedpreferencesprovider"
+  const val appsBundleIds = "appsBundleIds"
+  const val dataSync = "dataSync"
+  const val contentURL= "content://"
+  const val valueErrorMessage = "Value is missing."
+  const val keyErrorMessage = "Key is missing."
+  const val clearDataErrorMessage = "Error clearing shared data"
+  const val noValidDataErrorMessage = "No valid data found for key:"
+  const val iterationErrorMessage = "Error during authority iteration"
+  const val savingErrorMessage = "Error saving data"
+  const val keyLabel = "Key"
+  const val updateKeyNotFoundErrorMessage = "not found or update failed"
+  const val updateDataErrorMessage = "Error updating data for key"
+  const val deleteKeyNotFoundErrorMessage = "not found or delete failed"
+  const val deleteDataErrorMessage = "Error deleting data for key"
+  const val clearDataKeyNotFoundErrorMessage = "Error occurred while clearing SharedPreferences keys"
+  const val VALUE_ERROR = "VALUE_ERROR"
+  const val KEY_ERROR= "KEY_ERROR"
+  const val CLEAR_ERROR= "CLEAR_ERROR"
+  const val NO_DATA_FOUND_ERROR= "NO_DATA_FOUND_ERROR"
+  const val ACTION_ERROR = "ACTION_ERROR"
+  const val SAVE_ERROR= "SAVE_ERROR"
+  const val UPDATE_ERROR = "UPDATE_ERROR"
+  const val DELETE_ERROR = "DELETE_ERROR"
+}

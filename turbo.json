@@ -1,0 +1,45 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build:android": {
+      "env": ["ORG_GRADLE_PROJECT_newArchEnabled=false"],
+      "inputs": [
+        "package.json",
+        "android",
+        "!android/build",
+        "src/*.ts",
+        "src/*.tsx",
+        "examples/example1/package.json",
+        "examples/example1/android",
+        "!examples/example1/android/.gradle",
+        "!examples/example1/android/build",
+        "!examples/example1/android/app/build",
+        "examples/example2/package.json",
+        "examples/example2/android",
+        "!examples/example2/android/.gradle",
+        "!examples/example2/android/build",
+        "!examples/example2/android/app/build"
+      ],
+      "outputs": []
+    },
+    "build:ios": {
+      "env": ["RCT_NEW_ARCH_ENABLED=0"],
+      "inputs": [
+        "package.json",
+        "*.podspec",
+        "ios",
+        "src/*.ts",
+        "src/*.tsx",
+        "examples/example1/package.json",
+        "examples/example1/ios",
+        "!examples/example1/ios/build",
+        "!examples/example1/ios/Pods",
+        "examples/example2/package.json",
+        "examples/example2/ios",
+        "!examples/example2/ios/build",
+        "!examples/example2/ios/Pods"
+      ],
+      "outputs": []
+    }
+  }
+}
