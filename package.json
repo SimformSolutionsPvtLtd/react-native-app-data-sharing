@@ -1,6 +1,6 @@
 {
   "name": "react-native-app-data-sharing",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "This React Native package facilitates seamless and secure data sharing between applications on the same device.",
   "source": "./src/index.tsx",
   "main": "./build/commonjs/index.js",
@@ -24,7 +24,6 @@
     "!**/__mocks__",
     "!**/.*",
     "plugin",
-    "!plugin/src",
     "app.plugin.js"
   ],
   "scripts": {
@@ -161,25 +160,9 @@
     "source": "src",
     "output": "build",
     "targets": [
-      [
-        "commonjs",
-        {
-          "esm": true
-        }
-      ],
-      [
-        "module",
-        {
-          "esm": true
-        }
-      ],
-      [
-        "typescript",
-        {
-          "project": "tsconfig.build.json",
-          "esm": true
-        }
-      ]
+      "commonjs",
+      "module",
+      "typescript"
     ]
   },
   "create-react-native-library": {
@@ -190,15 +173,5 @@
   "dependencies": {
     "@expo/config-plugins": "^9.0.12"
   },
-  "types": "build/typescript/commonjs/src/index.d.ts",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./build/typescript/module/src/index.d.ts"
-      },
-      "require": {
-        "types": "./build/typescript/commonjs/src/index.d.ts"
-      }
-    }
-  }
+  "types": "build/typescript/src/index.d.ts"
 }
