@@ -17,7 +17,14 @@ jobs:
         with:
           node-version: 18
           registry-url: https://registry.npmjs.org
+      - name: 🧶 Print Yarn Version
+        run: yarn --version
       - name: 🚀 Build & Publish
-        run: yarn install && yarn build && yarn npm publish --access public
+        run: |
+          yarn config set npmAlwaysAuth true
+          yarn config set npmAuthToken "${NODE_AUTH_TOKEN}"
+          yarn install
+          yarn build
+          yarn npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
